@@ -1,37 +1,137 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <link href="css/style.css" rel="stylesheet" type="text/css" />
-    <meta charset="utf-8">
-    <link rel="icon" type="image/png" href="assets/favicon.png">
-    <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
-    <title>Fisheye - photographe </title>
-  </head>
-  <body>
-    <header>
-      <img src="assets/images/logo.png" class="logo" />
-    </header>
-    <main id="main">
-      <div class="photograph-header">
-        <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+<html lang="fr">
+
+<head>
+  <link href="css/style.css" rel="stylesheet" type="text/css" />
+  <meta charset="utf-8">
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
+  <title>Fisheye - photographe </title>
+</head>
+
+<body>
+  <header role="banner">
+    <a href="/" title="Page d'accueil Fisheye" tabindex="7">
+      <img src="assets/images/logo.png" class="logo" alt="Fisheye" />
+    </a>
+  </header>
+
+  <main id="main">
+
+
+
+
+
+    <div class="photograph-header">
+      <button class="contact_button" id="contact-openForm" tabindex="8" aria-role="button" aria-controls="modal"
+        aria-label="Contact me">Contactez-moi</button>
+    </div>
+
+
+
+    <div class="photograph-infos">
+      <div>
+        <p id="photograph-likes"></p>
+        <svg xmlns="http: //www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart-fill"
+          viewBox="0 0 16 16">
+          <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z" />
+        </svg>
       </div>
-    </main>
-    <div id="contact_modal">
-			<div class="modal">
-				<header>
-          <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
+      <p id="photograph-price"></p>
+    </div>
+
+
+    <div class="filter-container">
+      <label for="filter-select" class="filter-text">Trier par</label>
+
+      <select class="filter-select" id="filter-select" tabindex="9" aria-label="Order by">
+        <option>Popularité</option>
+        <option>Date</option>
+        <option>Titre</option>
+      </select>
+
+    </div>
+
+
+
+    <dialog class="lightbox" id="lightbox-modal" role="dialog" aria-hidden="true" aria-modal="true"
+      aria-label="image closeup view">
+      <button class="lightbox-close" tabindex="5" id="lightbox-close" aria-label="close dialog">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+          <path
+            d="M310.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L160 210.7 54.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L114.7 256 9.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 301.3 265.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L205.3 256 310.6 150.6z" />
+        </svg>
+      </button>
+      <div class="lightbox-content">
+        <a aria-label="previous image" tabindex="3" id="lightbox-previous">
+          <svg class="lightbox-button" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512">
+            <path
+              d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256 214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z" />
+          </svg>
+        </a>
+
+        <div id="lightbox-content">
+
+
+        </div>
+
+        <a aria-label="Next image" tabindex="1" id="lightbox-next">
+          <svg class="lightbox-button" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512">
+            <path
+              d="M246.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L178.7 256 41.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z" />
+          </svg>
+        </a>
+      </div>
+    </dialog>
+
+    <dialog class="contact_modal" id="contact_modal" aria-hidden="true" aria-modal="true" aria-labelledby="title-form">
+      <div role="dialog">
+        <header>
+          <h2 id="title-form">Contactez-moi</h2>
+          <button aria-label="close contact form" id='contact-closeForm' tabindex="6">
+            <img src="assets/icons/close.svg" />
+          </button>
         </header>
-				<form>
-					<div>
-						<label>Prénom</label>
-						<input />
-					</div>
-          <button class="contact_button">Envoyer</button>
-				</form>
-			</div>
-		</div>
-    <script src="/scripts/pages/photographer.js"></script>
-    <script src="/scripts/utils/contactForm.js"></script>
-  </body>
+        <section>
+          <form method="dialog" id="contact-form">
+            <label for="contact-firstName" id="label-firstName">Prénom</label>
+            <input type="text" id="contact-firstName" tabindex="1" aria-labelledby="label-firstName" />
+            <span id="error-firstName"></span>
+            <label for="contact-lastName" id="label-lastName">Nom</label>
+            <input type="text" id="contact-lastName" tabindex="2" aria-labelledby="label-lastName" />
+            <span id="error-lastName"></span>
+            <label for="contact-email" id="label-email">Email</label>
+            <input type="text" id="contact-email" tabindex="3" aria-labelledby="label-email" />
+            <span id="error-email"></span>
+            <label for="contact-message" id="label-message">Votre message</label>
+            <textarea rows="3" id="contact-message" tabindex="4" aria-labelledby="label-message"></textarea>
+            <span id="error-message"></span>
+            <button type="submit" class="contact_button" id="contact-submitForm" tabindex="5"
+              aria-label="Send">Envoyer</button>
+          </form>
+        </section>
+      </div>
+      </div>
+    </dialog>
+
+
+
+    <div id="pictures-list"></div>
+
+
+
+
+  </main>
+
+
+
+  <script src="scripts/pages/photographer.js" type="module"></script>
+  <script src="scripts/factories/photographer.js"></script>
+  <script src="scripts/factories/form.js"></script>
+  <script src="scripts/factories/modal.js"></script>
+  <script src="scripts/factories/media.js"></script>
+  <script src="scripts/utils/likes.js"></script>
+  <script src="scripts/utils/filter.js"></script>
+</body>
+
 </html>
