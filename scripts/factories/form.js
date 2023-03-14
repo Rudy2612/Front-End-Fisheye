@@ -1,8 +1,9 @@
-function formFactory(titleForm) {
+export default function formFactory(titleForm) {
 
+    // Modal <dialog> du formulaire
     let modalDOM = document.getElementById('contact_modal')
-    let formDOM = document.getElementById('contact-form')
 
+    // Ouvrir le formulaire
     function openModal() {
         modalDOM.show()
         modalDOM.ariaHidden = "false"
@@ -10,12 +11,14 @@ function formFactory(titleForm) {
         document.body.addEventListener('focus', accessibilityFocus, true)
     }
 
+    // Fermer le formulaire
     function closeModal() {
         document.body.removeEventListener('focus', accessibilityFocus, true)
         modalDOM.close()
         modalDOM.ariaHidden = "true"
     }
 
+    // Fonction pour garder le focus dans le modal dialog
     function accessibilityFocus(element) {
         let modalNodes = modalDOM.getElementsByTagName('*')
         let isInclude = Array.from(modalNodes).filter((e) => e.isEqualNode(element.target))
@@ -38,14 +41,14 @@ function formFactory(titleForm) {
         return regexEmail.test(email);
     }
 
-    // Fonction innerText
+    // Fonction innerText pour écrire une erreur pour un champ donné
     function writeError(id, message) {
         document.getElementById(id).innerText = message
     }
 
 
 
-    //  ------- Function éxécuté à la soumission du formulaire -------
+    //  ------- Function éxécutée à la soumission du formulaire -------
     function submit(e) {
 
         e.preventDefault();
@@ -103,11 +106,14 @@ function formFactory(titleForm) {
 
 
 
+    //  ------- Function éxécutée à l'instanciation de la factory -------
+    
     function init() {
+        // Créer un titre personnalisé sur la modal portant le nom du photographe
         var title = document.getElementById('title-form');
         title.innerHTML = titleForm;
 
-
+        // Créer les éventListener sur les champs du formulaire
         eventListenerFormLength('contact-firstName', 1, 'error-firstName', 'Veuillez renseignez le champs');
         eventListenerFormLength('contact-lastName', 1, 'error-lastName', 'Veuillez renseignez le champs');
         eventListenerFormEmail('contact-email', 'error-email', 'Le format de l\'email n\'est pas correct.');

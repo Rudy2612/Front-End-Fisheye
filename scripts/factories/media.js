@@ -1,10 +1,11 @@
-function mediaFactory(media) {
+export default function mediaFactory(media) {
 
     //  ------- Création des vignette de media avec affichage titre et likes -------
     function getMediaCardDOM(media) {
         const div = document.createElement('div');
         div.classList.add('media-container');
-
+        
+        // Pour chaque médias, créer une vignette
         for (var i = 0; i < media.length; i++) {
             const divMedia = document.createElement('div');
             divMedia.classList.add('media-item');
@@ -56,6 +57,7 @@ function mediaFactory(media) {
             div.appendChild(divMedia);
         }
 
+        // Return liste de plusieurs vignettes
         return div;
     }
 

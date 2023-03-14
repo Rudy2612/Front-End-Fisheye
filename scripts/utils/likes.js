@@ -13,3 +13,5 @@ function likeIncrement(id, data) {
 
     return medias;
 }
+
+export { likeIncrement }

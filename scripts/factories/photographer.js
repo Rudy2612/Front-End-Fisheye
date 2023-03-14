@@ -1,9 +1,10 @@
-function photographerFactory(photographer) {
+export default function photographerFactory(photographer) {
 
     const { id, name, portrait, city, country, tagline, price } = photographer;
 
     const picture = `assets/photographers/${portrait}`;
 
+    // Créations d'une vignette photographe pour la page d'accueil
     function getPhotographerCardDOM() {
         const article = document.createElement('article');
 
@@ -43,7 +44,7 @@ function photographerFactory(photographer) {
         return (article);
     }
 
-    // Fonction pour créer l'entête de la page
+    // Fonction pour créer l'entête de la page d'un photographe
     function createPhotographerHeader() {
         const div_name = document.createElement('div');
         div_name.classList.add('photograph-header-name')
@@ -65,6 +66,8 @@ function photographerFactory(photographer) {
         img.setAttribute('src', picture)
         img.alt = name
         div_img.appendChild(img);
+
+        // Retourne une node-list avec le nom, l'emplacement et une biographie et une seconde avec l'image
 
         return ({ div_name, div_img });
     }
