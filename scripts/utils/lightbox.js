@@ -46,7 +46,6 @@ function closeLightbox() {
 // Fonction pour garder le focus dans le modal dialog de la lightbox
 function accessibilityFocus(element) {
     let modalNodes = lightbox.getElementsByTagName('*')
-    console.log(modalNodes)
     let isInclude = Array.from(modalNodes).filter((e) => e.isEqualNode(element.target))
     if (isInclude.length === 0)
         document.getElementById('lightbox-next').focus()
@@ -114,7 +113,6 @@ function listenerKey(e) {
             break;
     }
 }
-
 
 function nextSlide() {
     let current_position = Number(document.querySelector('.lightbox-img').dataset.current_position);
